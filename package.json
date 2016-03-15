@@ -1,0 +1,45 @@
+{
+  "name": "sample-media",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "config": {
+    "scss_dir": "assets/scss",
+    "css_dir": "public/assets/css",
+    "jade_dir": "assets/tmpl",
+    "html_dir": "public",
+    "img_src_dir": "assets/img",
+    "img_dir": "public/assets/img",
+    "js_src_dir": "assets/js",
+    "js_dir": "public/assets/js"
+  },
+  "scripts": {
+    "start-serve": "browser-sync start --server public/",
+    "js:min": "uglifyjs $npm_package_config_js_src_dir/common.js > $npm_package_config_js_dir/common.js",
+    "css:comb": "csscomb $npm_package_config_scss_dir/*.scss",
+    "css:scss": "node-sass --output-style compact $npm_package_config_scss_dir/common.scss > $npm_package_config_css_dir/common.css",
+    "css:prefix": "postcss --use autoprefixer -b 'last 2 versions' $npm_package_config_css_dir/*.css",
+    "imagemin": "imagemin $npm_package_config_img_src_dir $npm_package_config_img_dir -p",
+    "build:js": "browserify $npm_package_config_js_src_dir/*.js > $npm_package_config_js_dir/common.bundle.js",
+    "build:css": "npm run css:comb && npm run css:scss && npm run css:prefix",
+    "build:jade": "jade -o ./public $npm_package_config_jade_dir --pretty; find public -name '_*.html' | xargs rm -rf",
+    "build": "npm run build:css & npm run build:jade && npm run build:js && npm run imagemin",
+    "watch:js": "watch 'npm run build:js' $npm_package_config_js_src_dir",
+    "watch:css": "watch 'npm run build:css' $npm_package_config_scss_dir",
+    "watch:jade": "watch 'npm run build:jade' $npm_package_config_jade_dir",
+    "watch": "npm run 'watch:js' & npm run 'watch:css' & npm run 'watch:jade'",
+    "start": "npm run start-serve & npm run watch"
+  },
+  "author": "hi0711",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "browserify": "^13.0.0",
+    "imagemin-cli": "^2.1.0",
+    "jade": "^1.11.0",
+    "node-sass": "^3.4.2",
+    "postcss-cli": "^2.5.1",
+    "uglifyjs": "^2.4.10",
+    "watch": "^0.17.1"
+  }
+}

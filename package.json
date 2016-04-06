@@ -30,7 +30,7 @@
     "start": "npm run start-serve & npm run watch"
   },
   "author": "hi0711",
-  "license": "ISC",
+  "license": "Good Boy",
   "devDependencies": {
     "browserify": "^13.0.0",
     "imagemin-cli": "^2.1.0",

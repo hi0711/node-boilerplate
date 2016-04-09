@@ -17,7 +17,7 @@
     "start-serve": "live-server ./public/",
     "css:comb": "csscomb $npm_package_config_scss_dir/*.scss",
     "css:scss": "node-sass --output-style compact $npm_package_config_scss_dir/common.scss > $npm_package_config_css_dir/common.css",
-    "css:prefix": "postcss --use autoprefixer -b 'last 2 versions' $npm_package_config_css_dir/*.css",
+    "css:prefix": "postcss -u autoprefixer -b 'last 2 versions' < $npm_package_config_css_dir/common.css",
     "imagemin": "imagemin $npm_package_config_img_src_dir $npm_package_config_img_dir -p",
     "build:js": "browserify $npm_package_config_js_src_dir/*.js | uglifyjs -mc > $npm_package_config_js_dir/common.bundle.js",
     "build:css": "npm run css:comb && npm run css:scss && npm run css:prefix",
@@ -32,6 +32,7 @@
   "author": "hi0711",
   "license": "Good Boy",
   "devDependencies": {
+    "autoprefixer": "^6.3.6",
     "browserify": "^13.0.0",
     "imagemin-cli": "^2.1.0",
     "jade": "^1.11.0",

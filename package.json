@@ -15,12 +15,12 @@
   },
   "scripts": {
     "start-serve": "live-server ./public/",
-    "css:comb": "csscomb $npm_package_config_scss_dir/*.scss",
+    "css:comb": "csscomb $npm_package_config_scss_dir/**/*.scss",
     "css:scss": "node-sass --output-style compact $npm_package_config_scss_dir/common.scss > $npm_package_config_css_dir/common.css",
     "css:prefix": "postcss -u autoprefixer --autoprefixer.browsers '> 5%' -r $npm_package_config_css_dir/*",
     "imagemin": "imagemin $npm_package_config_img_src_dir $npm_package_config_img_dir -p",
     "build:js": "browserify $npm_package_config_js_src_dir/*.js | uglifyjs -mc > $npm_package_config_js_dir/common.bundle.js",
-    "build:css": "npm run css:comb && npm run css:scss && npm run css:prefix",
+    "build:css": "npm run css:comb && npm run css:scss; npm run css:prefix",
     "build:jade": "jade -o ./public $npm_package_config_jade_dir --pretty; find public -name '_*.html' | xargs rm -rf",
     "build": "npm run build:css & npm run build:jade && npm run build:js && npm run imagemin",
     "watch:js": "watch 'npm run build:js' $npm_package_config_js_src_dir",
@@ -30,7 +30,7 @@
     "start": "npm run start-serve & npm run watch"
   },
   "author": "hi0711",
-  "license": "ISC",
+  "license": "Good Boy",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "browserify": "^13.0.0",

@@ -23,7 +23,7 @@
     "build:js": "browserify $npm_package_config_js_src_dir/*.js | uglifyjs -mc > $npm_package_config_js_dir/common.bundle.js",
     "build:css": "npm run css:comb; npm run css:scss; npm run css:prefix",
     "build:jade": "jade -o ./public $npm_package_config_jade_dir --pretty; find public -name '_*.html' | xargs rm -rf",
-    "build": "npm run build:css & npm run build:jade && npm run build:js && npm run imagemin",
+    "build": "npm run build:jade; npm run build:js; npm run build:css",
     "watch:js": "watch 'npm run build:js' $npm_package_config_js_src_dir",
     "watch:css": "watch 'npm run css:scss' $npm_package_config_scss_dir",
     "watch:jade": "watch 'npm run build:jade' $npm_package_config_jade_dir",

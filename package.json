@@ -19,7 +19,7 @@
     "css:comb": "csscomb $npm_package_config_scss_dir/**/*.scss",
     "css:scss": "node-sass --output-style compact $npm_package_config_scss_dir/common.scss > $npm_package_config_css_dir/common.css",
     "css:prefix": "postcss -u autoprefixer --autoprefixer.browsers '> 5%' -r $npm_package_config_css_dir/*",
-    "imagemin": "imagemin $npm_package_config_img_src_dir $npm_package_config_img_dir -p",
+    "imagemin": "imagemin $npm_package_config_img_src_dir/* -o $npm_package_config_img_dir",
     "build:js": "browserify $npm_package_config_js_src_dir/*.js | uglifyjs -mc > $npm_package_config_js_dir/common.bundle.js",
     "build:css": "npm run css:comb; npm run css:scss; npm run css:prefix",
     "build:jade": "jade -o ./public $npm_package_config_jade_dir --pretty; find public -name '_*.html' | xargs rm -rf",
@@ -36,12 +36,12 @@
     "autoprefixer": "^6.3.6",
     "browser-sync": "^2.11.2",
     "browserify": "^13.0.0",
-    "imagemin-cli": "^2.1.0",
+    "imagemin-cli": "^3.0.0",
     "jade": "^1.11.0",
-    "live-server": "^0.9.2",
+    "live-server": "^1.1.0",
     "node-sass": "^3.4.2",
     "postcss-cli": "^2.5.1",
     "uglifyjs": "^2.4.10",
-    "watch": "^0.17.1"
+    "watch": "^0.19.2"
   }
 }

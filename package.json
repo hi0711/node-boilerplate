@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "node-boilerplate",
   "version": "2.0.0",
   "description": "Use boilerplate",
   "main": "index.js",
@@ -21,9 +21,9 @@
     "css:prefix": "postcss -u autoprefixer --autoprefixer.browsers '> 5%' -r $npm_package_config_css_dir/*",
     "imagemin": "imagemin $npm_package_config_img_src_dir/* -o $npm_package_config_img_dir",
     "build:js": "browserify $npm_package_config_js_src_dir/*.js | uglifyjs -mc > $npm_package_config_js_dir/common.bundle.js",
-    "build:css": "npm run css:comb; npm run css:scss; npm run css:prefix",
+    "build:css": "npm run css:comb; npm run css:scss",
     "build:jade": "jade -o ./public $npm_package_config_jade_dir --pretty; find public -name '_*.html' | xargs rm -rf",
-    "build": "npm run build:jade; npm run build:js; npm run build:css",
+    "build": "npm run build:jade; npm run build:js; npm run build:css && npm run css:prefix",
     "watch:js": "watch 'npm run build:js' $npm_package_config_js_src_dir",
     "watch:css": "watch 'npm run css:scss' $npm_package_config_scss_dir",
     "watch:jade": "watch 'npm run build:jade' $npm_package_config_jade_dir",
@@ -42,6 +42,6 @@
     "node-sass": "^3.4.2",
     "postcss-cli": "^2.5.1",
     "uglifyjs": "^2.4.10",
-    "watch": "^0.19.2"
+    "watch": "^1.0.1"
   }
 }

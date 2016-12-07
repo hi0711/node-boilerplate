@@ -1,6 +1,6 @@
 {
   "name": "node-boilerplate",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Use boilerplate",
   "main": "index.js",
   "config": {
@@ -20,7 +20,7 @@
     "css:scss": "node-sass --output-style compact $npm_package_config_scss_dir/common.scss > $npm_package_config_css_dir/common.css",
     "css:prefix": "postcss -u autoprefixer --autoprefixer.browsers '> 5%' -r $npm_package_config_css_dir/*",
     "imagemin": "imagemin $npm_package_config_img_src_dir/* -o $npm_package_config_img_dir",
-    "build:js": "browserify $npm_package_config_js_src_dir/*.js | uglifyjs -mc > $npm_package_config_js_dir/common.bundle.js",
+    "build:js": "browserify $npm_package_config_js_src_dir/*.js | uglifyjs -m > $npm_package_config_js_dir/common.bundle.js",
     "build:css": "npm run css:comb; npm run css:scss",
     "build:jade": "jade -o ./public $npm_package_config_jade_dir --pretty; find public -name '_*.html' | xargs rm -rf",
     "build": "npm run build:jade; npm run build:js; npm run build:css && npm run css:prefix",
@@ -41,7 +41,13 @@
     "live-server": "^1.1.0",
     "node-sass": "^3.4.2",
     "postcss-cli": "^2.5.1",
+    "pug-cli": "^1.0.0-alpha6",
     "uglifyjs": "^2.4.10",
     "watch": "^1.0.1"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "jshint": "^2.9.4",
+    "sanitize.css": "^4.1.0"
   }
 }

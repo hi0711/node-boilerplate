@@ -6,7 +6,7 @@
   "config": {
     "scss_dir": "assets/scss",
     "css_dir": "public/assets/css",
-    "jade_dir": "assets/tmpl",
+    "pug_dir": "assets/tmpl",
     "html_dir": "public",
     "img_src_dir": "assets/img",
     "img_dir": "public/assets/img",
@@ -22,12 +22,12 @@
     "imagemin": "imagemin $npm_package_config_img_src_dir/* -o $npm_package_config_img_dir",
     "build:js": "browserify $npm_package_config_js_src_dir/*.js | uglifyjs -m > $npm_package_config_js_dir/common.bundle.js",
     "build:css": "npm run css:comb; npm run css:scss",
-    "build:jade": "jade -o ./public $npm_package_config_jade_dir --pretty; find public -name '_*.html' | xargs rm -rf",
-    "build": "npm run build:jade; npm run build:js; npm run build:css && npm run css:prefix",
+    "build:pug": "pug --hierarchy -o ./public $npm_package_config_pug_dir --pretty; find public -name '_*.html' | xargs rm -rf",
+    "build": "npm run build:pug; npm run build:js; npm run build:css && npm run css:prefix",
     "watch:js": "watch 'npm run build:js' $npm_package_config_js_src_dir",
     "watch:css": "watch 'npm run css:scss' $npm_package_config_scss_dir",
-    "watch:jade": "watch 'npm run build:jade' $npm_package_config_jade_dir",
-    "watch": "npm run 'watch:css' & npm run 'watch:jade' & npm run 'watch:js'",
+    "watch:pug": "watch 'npm run build:pug' $npm_package_config_pug_dir",
+    "watch": "npm run 'watch:css' & npm run 'watch:pug' & npm run 'watch:js'",
     "start": "npm run start-serve & npm run watch"
   },
   "author": "hi0711",
@@ -37,9 +37,8 @@
     "browser-sync": "^2.11.2",
     "browserify": "^13.0.0",
     "imagemin-cli": "^3.0.0",
-    "jade": "^1.11.0",
     "live-server": "^1.1.0",
-    "node-sass": "^3.4.2",
+    "node-sass": "^4.1.1",
     "postcss-cli": "^2.5.1",
     "pug-cli": "^1.0.0-alpha6",
     "uglifyjs": "^2.4.10",
@@ -48,6 +47,7 @@
   "dependencies": {
     "jquery": "^3.1.1",
     "jshint": "^2.9.4",
+    "pug": "^2.0.0-beta6",
     "sanitize.css": "^4.1.0"
   }
 }
